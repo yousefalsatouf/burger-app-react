@@ -26,7 +26,6 @@ const Burger = (props) =>
                 <BurgerIngredient type="bread-top" />
                 { objIngredientsToArr }
                 <BurgerIngredient type="bread-bottom" />
-
             </div>
         </Aux>
     );
