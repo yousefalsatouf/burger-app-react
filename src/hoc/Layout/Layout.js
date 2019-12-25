@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import classes from './Layout.css'; //this guy here helps me to get classes from the css file
-import Aux from "../../hoc/Auxiliary";
-import Toolbar from "../Navigation/Toolbar/Toolbar";
-import SideDrawer from "../SideDrawer/SideDrawer";
+import Aux from "../Auxiliary/Auxiliary";
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import SideDrawer from "../../components/SideDrawer/SideDrawer";
 
 class Layout extends Component
 {
