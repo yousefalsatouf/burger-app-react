@@ -3,6 +3,7 @@ import classes from './Burger.css'
 import Aux from "../../hoc/Auxiliary/Auxiliary";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
+
 const Burger = (props) =>
 {
     // to do map have to transfer object to array ...
