@@ -3,15 +3,62 @@ import Button from "../../../components/UI/Button/Button";
 import axios from '../../../axios';
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import classes from "./ContactData.css";
+import Input from "../../../components/UI/Input/Input";
 
 class ContactData extends Component
 {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: '',
+        orderForm: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Street'
+                },
+                value: ''
+            },
+            zipCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your code postal'
+                },
+                value: ''
+            },
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Country'
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your Mail'
+                },
+                value: ''
+            },
+            deliveryMethod: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        {value: 'fastest', displayValue: 'Fastest'},
+                        {value: 'cheapest', displayValue: 'Cheapest'}
+                    ]
+                },
+                value: ''
+            },
         },
         loading: false,
     };
@@ -21,17 +68,6 @@ class ContactData extends Component
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
-            customer: {
-                name: 'yosuef alsatouf',
-                address: {
-                    street: 'somestreetinsomswhere',
-                    zipCode: '12345',
-                    country: "belgium"
-                },
-                email: 'test@test.com',
-                deliveryMethod: 'fastest'
-            },
-            deliveryMethod: 'fastest'
         };
 
         axios.post( '/orders.json', order )
@@ -47,12 +83,25 @@ class ContactData extends Component
 
     render()
     {
+        const formElementsArr = [];
+        for (let key in this.state.orderForm)
+        {
+            formElementsArr.push({
+                id: key,
+                config: this.state.orderForm[key],
+            });
+        }
         let form = (
             <form className={classes.ContactData}>
-                <input className={classes.Input} type="text" name="name" placeholder="Enter Your Name"/>
-                <input className={classes.Input} type="email" name="email" placeholder="Enter Your Mail"/>
-                <input className={classes.Input} type="text" name="street" placeholder="Enter Your Street"/>
-                <input className={classes.Input} type="text" name="cp" placeholder="Enter Your Code Postal"/>
+                <h1>Enter your data !</h1>
+                {formElementsArr.map(formElement => (
+                    <Input
+                        key={formElement.id}
+                        elementType={formElement.config.elementType}
+                        elementConfig={formElement.config.elementConfig}
+                        value={formElement.config.value}
+                    />
+                ))}
                 <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
             </form>
         );
@@ -62,7 +111,7 @@ class ContactData extends Component
         }
         return(
             <div>
-                <h1>Enter your data !</h1>
+
                 {form}
             </div>
         );
