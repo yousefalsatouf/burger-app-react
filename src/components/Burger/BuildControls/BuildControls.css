@@ -1,3 +1,8 @@
+.BuildControls
+{
+    background-color: #e6813c;
+    padding: 2rem;
+}
 .OrderButton {
     background-color: #DAD735;
     outline: none;
@@ -8,6 +13,13 @@
     font-size: 1.2em;
     padding: 15px 30px;
     box-shadow: 2px 2px 2px #966909;
+    margin: 1rem auto;
+}
+
+.Price
+{
+    text-align: center;
+    margin: 2rem auto;
 }
 
 .OrderButton:hover, .OrderButton:active {
