@@ -4,7 +4,9 @@ import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import errorHandler from "../../hoc/ErrorHandler/ErrorHandler";
+
 import axios from '../../axios';
+
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
@@ -27,7 +29,7 @@ class BurgerBuilder extends Component
 
     componentDidMount()
     {
-        axios.get('https://my-react-burger-486c2.firebaseio.com/ingredients.json')
+       axios.get('https://my-react-burger-486c2.firebaseio.com/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data })
             });
@@ -164,6 +166,5 @@ class BurgerBuilder extends Component
         );
     }
 }
-
 
 export default errorHandler(BurgerBuilder, axios);
