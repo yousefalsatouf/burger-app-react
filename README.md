@@ -8,6 +8,7 @@ cd burger-app-react
 
 #### install dependencies with npm
 npm install
-npm start to start server
+#### to start server on localhost 
+npm start 
 
 
